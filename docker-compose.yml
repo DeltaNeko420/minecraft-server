@@ -1,0 +1,15 @@
+services:
+  server:
+    build:
+      context: .
+      args:
+        - UID=1000
+        - GID=1000
+        - SERVER_JAR_URL=https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/324/downloads/paper-1.18.2-324.jar
+    ports:
+      - 25565:25565
+    volumes:
+      - ./server:/server
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
