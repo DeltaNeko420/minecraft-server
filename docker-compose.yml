@@ -1,15 +1,34 @@
 services:
+  db:
+    image: mariadb
+    user: ${UID}:${GID}
+    environment:
+      - MARIADB_USER=${DB_USER}
+      - MARIADB_PASSWORD=${DB_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - ${DB_VOLUME}:/var/lib/mysql
+    restart: unless-stopped
+
   server:
     build:
       context: .
       args:
-        - UID=1000
-        - GID=1000
-        - SERVER_JAR_URL=https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/324/downloads/paper-1.18.2-324.jar
+        - UID=${UID}
+        - GID=${GID}
+        - SERVER_JAR_URL=${SERVER_JAR_URL}
+    depends_on:
+      - db
+    user: ${UID}:${GID}
+    links:
+      - db
     ports:
-      - 25565:25565
+      - ${SERVER_PORT}:25565
+      - ${SERVER_DYNMAP_PORT}:8123
     volumes:
-      - ./server:/server
+      - ${SERVER_VOLUME}:/server
     stdin_open: true
     tty: true
     restart: unless-stopped
