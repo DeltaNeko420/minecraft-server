@@ -1,2 +1,10 @@
-data/
-.env
+/*
+!.env.example
+!.gitignore
+!docker-compose.with-db.yml
+!docker-compose.with-dynmap.yml
+!docker-compose.yml
+!docker-entrypoint.sh
+!Dockerfile
+!LICENSE
+!README.md
