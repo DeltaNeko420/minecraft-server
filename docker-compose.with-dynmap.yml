@@ -1,4 +1,0 @@
-services:
-  server:
-    ports:
-      - ${SERVER_DYNMAP_PORT}:8123
