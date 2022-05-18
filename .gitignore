@@ -1,9 +1,9 @@
 /*
-!/.env.example
-!/.gitignore
-!/docker-compose.db.yml
-!/docker-compose.yml
-!/docker-entrypoint.sh
-!/Dockerfile
-!/LICENSE
-!/README.md
+!.env.example
+!.gitignore
+!docker-compose.db.yml
+!docker-compose.yml
+!docker-entrypoint.sh
+!Dockerfile
+!LICENSE
+!README.md
